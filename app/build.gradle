@@ -2,6 +2,8 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs.kotlin'
+    id 'kotlin-parcelize'
 }
 
 android {
@@ -46,6 +48,7 @@ ext {
     junit = '4.13.2'
     espresso = '3.4.0'
     lifecycle = '2.2.0'
+    navigation = "2.5.3"
 }
 
 dependencies {
@@ -63,6 +66,8 @@ dependencies {
     implementation 'androidx.fragment:fragment-ktx:1.5.4'
     //Navigation
     implementation "androidx.navigation:navigation-dynamic-features-fragment:2.5.3"
+    implementation "androidx.navigation:navigation-fragment-ktx:$navigation"
+    implementation "androidx.navigation:navigation-ui-ktx:$navigation"
 
     testImplementation "org.mockito.kotlin:mockito-kotlin:4.0.0"
     testImplementation 'junit:junit:4.13.2'

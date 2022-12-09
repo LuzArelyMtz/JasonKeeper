@@ -15,13 +15,20 @@ class JsonKeeperVM: ViewModel() {
     val api = JsonKeeperAPIImpl
     val repository: Repository = RepositoryImpl(api)
 
-    private var _livedata = MutableLiveData<ResponseAPI>()
-    val livedata : LiveData<ResponseAPI> =_livedata
+    private val _response = MutableLiveData<ResponseAPI>()
+    val response : LiveData<ResponseAPI> =_response
+
+    private val _errorMessage = MutableLiveData<String>()
+    val errorMessage  : LiveData<String> =_errorMessage
+
+    private val _progressBar = MutableLiveData<Boolean>()
+    val progressBar   : LiveData<Boolean> =_progressBar
 
     fun fetchData(){
         viewModelScope.launch{
-            _livedata.value=repository.getData()
+            _progressBar.value = true
+            _response.value=repository.getData()
         }
+        _progressBar.value = false
     }
-
 }

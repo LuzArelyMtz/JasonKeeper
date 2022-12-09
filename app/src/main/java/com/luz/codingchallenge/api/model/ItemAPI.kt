@@ -1,7 +1,10 @@
 package com.luz.codingchallenge.api.model
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class ItemAPI(
     @SerializedName("date")
     val date: String,
@@ -11,4 +14,4 @@ data class ItemAPI(
     val img: String?,
     @SerializedName("title", alternate =["Title"])
     val title: String?
-)
+): Parcelable
